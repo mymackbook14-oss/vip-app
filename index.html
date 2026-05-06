@@ -266,7 +266,7 @@
         <div id="loader-text">Verifying User Profile...</div>
     </div>
 
-    <script>
+ <script>
         const tg = window.Telegram.WebApp;
         tg.expand(); // Make it full screen
 
@@ -277,17 +277,27 @@
             overlay.style.display = 'flex';
             loaderText.innerText = "Checking Anti-Bot System...";
 
+            // 👇 YAHAN APNI TERMINAL WALI 3 LINKS DALEIN 👇
+            const linkBasic = "https://t.me/$-aMOSVF32VchAwAALgbFhs56w4w";
+            const linkPremium = "https://t.me/$inIeiFF32VciAwAADr5aiuW5sEQ";
+            const linkExtreme = "https://t.me/$BZ4mW1F32VcjAwAAqDY8sjAOhFc";
+
+            let invoiceLink = "";
+            if (plan === 'basic') {
+                invoiceLink = linkBasic;
+            } else if (plan === 'premium') {
+                invoiceLink = linkPremium;
+            } else if (plan === 'extreme') {
+                invoiceLink = linkExtreme;
+            }
+
             // Fake verification delay
             setTimeout(() => {
                 loaderText.innerText = "Generating Secure Gateway...";
                 
                 setTimeout(() => {
-                    // ABHI KE LIYE HUMNE EK HI LINK DALI HAI
-                    // Aage chal kar hum Python se 3 alag links mangwayenge
-                    let invoiceLink = "https://t.me/$Iwc20lF32VcYAwAA6ZNnPX9f6Xs"; 
-
                     tg.openInvoice(invoiceLink, function(status) {
-                        overlay.style.display = 'none'; // Hide loader after popup closes
+                        overlay.style.display = 'none'; // Hide loader
                         
                         if (status === 'paid') {
                             tg.showAlert("Transaction Successful! Check the bot for your private link.");
@@ -297,7 +307,7 @@
                         } else {
                             tg.showAlert("Payment Failed. Please try again.");
                         }
-                    }); 
+                    });
                 }, 1500);
             }, 2000);
         }
