@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hard King VIP</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        :root { --primary: #0088cc; --bg: #0f0f10; --card: rgba(255, 255, 255, 0.05); }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg); color: white; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; overflow: hidden; }
+        .container { width: 90%; max-width: 400px; padding: 25px; background: var(--card); backdrop-filter: blur(15px); border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.1); text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h1 { font-size: 24px; margin-bottom: 10px; background: linear-gradient(to right, #0088cc, #00ffcc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        p { color: #b0b0b0; font-size: 14px; line-height: 1.5; }
+        .price-tag { font-size: 32px; font-weight: bold; margin: 20px 0; color: #fff; }
+        .price-tag span { font-size: 16px; color: #00ffcc; }
+        button { background: var(--primary); color: white; border: none; width: 100%; padding: 16px; border-radius: 12px; font-size: 18px; font-weight: 600; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3); }
+        button:active { transform: scale(0.98); }
+        #loader { display: none; margin-top: 15px; font-size: 13px; color: #00ffcc; }
+        .features { text-align: left; margin: 20px 0; font-size: 13px; color: #ddd; }
+        .features div { margin: 8px 0; display: flex; align-items: center; }
+        .features div::before { content: '✓'; margin-right: 10px; color: #00ffcc; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>HARD KING VIP</h1>
+        <p>Premium Trading Signals & Insider Content</p>
+        
+        <div class="features">
+            <div>Daily High-Accuracy Signals</div>
+            <div>Risk Management Strategies</div>
+            <div>24/7 Exclusive Community Access</div>
+        </div>
+
+        <div class="price-tag">1,500 <span>Stars</span></div>
+        
+        <button id="payBtn" onclick="processPayment()">UNLOCK VIP ACCESS</button>
+        <div id="loader">Verifying Account Security...</div>
+    </div>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand();
+
+        function processPayment() {
+            const btn = document.getElementById('payBtn');
+            const loader = document.getElementById('loader');
+            
+            btn.style.display = 'none';
+            loader.style.display = 'block';
+
+            // Fake verification check to delay and mask the bot
+            setTimeout(() => {
+                loader.innerText = "Generating Secure Invoice...";
+                setTimeout(() => {
+                    // YAHAN AAPNI LATEST INVOICE LINK DALEIN (Bot B wali)
+                    const invoiceLink = "https://t.me/$Iwc20lF32VcYAwAA6ZNnPX9f6Xs"; 
+                    
+                    tg.openInvoice(invoiceLink, function(status) {
+                        if (status === 'paid') {
+                            tg.showAlert("Welcome to the Inner Circle, VIP!");
+                            tg.close();
+                        } else {
+                            btn.style.display = 'block';
+                            loader.style.display = 'none';
+                            tg.showAlert("Payment not completed.");
+                        }
+                    });
+                }, 1500);
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
